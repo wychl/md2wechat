@@ -1,0 +1,131 @@
+/**
+ * MD 清新绿主题
+ * 自然、清爽的绿色调，适合技术文档或生活类文章
+ * 依赖 base.css 的基础样式和 CSS 变量
+ */
+
+/* 覆盖主题色变量 */
+:root {
+  --md-primary-color: #27ae60;
+  --md-secondary-green: #2ecc71;
+  --md-light-green-bg: #eafaf1;
+}
+
+/* ==================== 标题样式 ==================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--md-primary-color);
+}
+
+h1 {
+  border-bottom: 2px solid var(--md-primary-color);
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  border-bottom: 1px solid var(--md-primary-color);
+  padding-bottom: 0.2em;
+}
+
+h3 {
+  border-left: 4px solid var(--md-primary-color);
+  padding-left: 12px;
+}
+
+/* ==================== 引用块 ==================== */
+blockquote {
+  border-left-color: var(--md-primary-color);
+  background-color: var(--md-light-green-bg);
+  color: #2c3e2f;
+}
+
+/* 嵌套引用块更深色背景 */
+blockquote blockquote {
+  background-color: #d5f5e3;
+}
+
+/* GFM Alert 也将应用绿色主题 */
+.markdown-alert {
+  border-left-color: var(--md-primary-color) !important;
+}
+
+/* ==================== 链接 ==================== */
+a {
+  color: var(--md-primary-color);
+  border-bottom-color: rgba(39, 174, 96, 0.3);
+}
+a:hover {
+  color: var(--md-secondary-green);
+  border-bottom-color: var(--md-secondary-green);
+}
+
+/* ==================== 代码 ==================== */
+/* 行内代码背景微绿 */
+code {
+  background-color: rgba(39, 174, 96, 0.08);
+  color: #1e6f3f;
+}
+
+/* 代码块边框微绿 */
+pre {
+  border: 1px solid rgba(39, 174, 96, 0.15);
+  background-color: #f9fefb;
+}
+
+/* ==================== 列表标记 ==================== */
+ul li::before {
+  color: var(--md-primary-color);
+}
+
+/* 任务列表复选框 */
+.task-list-item input[type="checkbox"]:checked {
+  background-color: var(--md-primary-color);
+  border-color: var(--md-primary-color);
+}
+
+/* ==================== 表格 ==================== */
+th {
+  background-color: var(--md-light-green-bg);
+  color: var(--md-primary-color);
+  border-bottom-color: var(--md-primary-color);
+}
+
+tr:nth-child(even) {
+  background-color: rgba(39, 174, 96, 0.03);
+}
+
+/* ==================== 按钮或强调元素 ==================== */
+strong {
+  color: var(--md-primary-color);
+}
+
+.markup-highlight {
+  background-color: var(--md-primary-color);
+  color: white;
+}
+
+/* ==================== 阅读时间组件 ==================== */
+.reading-time {
+  border-left-color: var(--md-primary-color);
+  background-color: var(--md-light-green-bg);
+}
+
+/* ==================== 分隔线 ==================== */
+hr {
+  background: linear-gradient(to right, transparent, var(--md-primary-color), transparent);
+}
+
+/* ==================== 图片边框 ==================== */
+img {
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(39, 174, 96, 0.1);
+}
+
+/* ==================== 脚注 ==================== */
+.footnotes {
+  border-top-color: rgba(39, 174, 96, 0.2);
+}

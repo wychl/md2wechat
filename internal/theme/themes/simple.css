@@ -1,0 +1,278 @@
+/**
+ * MD 简洁主题
+ * 简洁现代的设计风格，基于 base.css 扩展
+ * 依赖 base.css 的基础样式和 CSS 变量
+ */
+
+/* ==================== 主题色变量覆盖 ==================== */
+:root {
+  --md-primary-color: #5a6b7c;
+  --md-simple-bg: #f7f8fa;
+  --md-simple-shadow: rgba(90, 107, 124, 0.08);
+  --md-simple-border: rgba(90, 107, 124, 0.12);
+}
+
+/* ==================== 页面级公众号风格 ==================== */
+
+/* 浅灰页面底色 */
+body {
+  background-color: #f5f5f5;
+}
+
+/* 白色卡片容器 */
+#output {
+  max-width: 660px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 1.8rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ==================== 标题样式 ==================== */
+h1 {
+  display: block;
+  margin: 0.6em 0 1.4em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid var(--md-primary-color);
+  font-size: calc(var(--md-font-size) * 1.65);
+  font-weight: 800;
+  color: var(--md-text-color);
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  display: block;
+  margin: 3.5em 0 1.8em;
+  padding: 0.6em 1.2em;
+  background: var(--md-simple-bg);
+  color: var(--md-primary-color);
+  font-size: calc(var(--md-font-size) * 1.45);
+  font-weight: 800;
+  text-align: center;
+  border: none;
+  border-radius: 8px 24px 8px 24px;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 6px var(--md-simple-shadow);
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 3px;
+  background: var(--md-primary-color);
+  border-radius: 2px;
+  margin: 0.45em auto 0;
+  opacity: 0.5;
+}
+
+h3 {
+  padding: 0.3em 0 0.3em 14px;
+  border-left: 4px solid var(--md-primary-color);
+  margin: 2.2em 0 0.6em;
+  color: var(--md-text-color);
+  font-size: calc(var(--md-font-size) * 1.2);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+h4 {
+  margin: 2em 8px 0.5em;
+  color: var(--md-primary-color);
+  font-size: calc(var(--md-font-size) * 1);
+  font-weight: bold;
+}
+
+h5 {
+  margin: 1.5em 8px 0.5em;
+  color: var(--md-primary-color);
+  font-size: calc(var(--md-font-size) * 1);
+  font-weight: bold;
+}
+
+h6 {
+  margin: 1.5em 8px 0.5em;
+  font-size: calc(var(--md-font-size) * 1);
+  color: var(--md-primary-color);
+}
+
+/* ==================== 正文段落 ==================== */
+p {
+  margin: 1em 0;
+  letter-spacing: 0.02em;
+  color: var(--md-text-color);
+}
+
+/* ==================== 引用块 ==================== */
+blockquote {
+  margin: 1.2em 0;
+  padding: 1em 1em 1em 2em;
+  border-left: 4px solid var(--md-primary-color);
+  border-bottom: 0.2px solid rgba(0, 0, 0, 0.04);
+  border-top: 0.2px solid rgba(0, 0, 0, 0.04);
+  border-right: 0.2px solid rgba(0, 0, 0, 0.04);
+  background: var(--md-simple-bg);
+  border-radius: 0 6px 6px 0;
+  color: var(--md-light-text);
+  font-style: italic;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==================== 列表项 ==================== */
+li {
+  margin: 0.5em 8px;
+  color: var(--md-text-color);
+}
+
+ul {
+  list-style: none;
+  padding-left: 1.5em;
+}
+
+ul li::before {
+  content: "·";
+  color: var(--md-primary-color);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+ol {
+  padding-left: 1.5em;
+}
+
+/* ==================== 链接 ==================== */
+a {
+  color: #576b95;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--md-primary-color);
+  text-decoration: underline;
+}
+
+/* ==================== 粗体 ==================== */
+strong {
+  color: var(--md-primary-color);
+  font-weight: bold;
+}
+
+/* ==================== 斜体 ==================== */
+em {
+  font-style: italic;
+  color: var(--md-light-text);
+}
+
+/* ==================== 代码 ==================== */
+code {
+  color: #5a6b7c;
+  background: rgba(90, 107, 124, 0.08);
+}
+
+pre {
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  padding: 1em;
+  overflow-x: auto;
+  background: var(--md-simple-bg);
+}
+
+pre code {
+  background: none;
+  color: inherit;
+  font-family: 'Fira Code', 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+/* ==================== 表格 ==================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25em 0;
+  font-size: 0.95em;
+}
+
+th {
+  background: var(--md-simple-bg);
+  color: var(--md-primary-color);
+  font-weight: 600;
+  padding: 0.6em 1em;
+  text-align: left;
+  border-bottom: 2px solid var(--md-primary-color);
+}
+
+td {
+  padding: 0.5em 1em;
+  border-bottom: 1px solid var(--md-border-color);
+}
+
+tr:nth-child(even) {
+  background: rgba(90, 107, 124, 0.03);
+}
+
+/* ==================== 图片 ==================== */
+img {
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+figcaption,
+.md-figcaption {
+  text-align: center;
+  color: var(--md-light-text);
+  font-size: 0.8em;
+  margin-top: 0.5em;
+}
+
+/* ==================== 分割线 ==================== */
+hr {
+  margin: 1.8em 0;
+  height: 1px;
+  border: none;
+  background: linear-gradient(to right, transparent, var(--md-primary-color), transparent);
+  opacity: 0.3;
+}
+
+/* ==================== 响应式：小屏幕适配 ==================== */
+@media (max-width: 640px) {
+  #output {
+    padding: 1.2rem 0.8rem;
+  }
+
+  h1 {
+    font-size: calc(var(--md-font-size) * 1.4);
+  }
+
+  h2 {
+    font-size: calc(var(--md-font-size) * 1.25);
+    margin: 2.8em 0 1.4em;
+    padding: 0.5em 1em;
+  }
+
+  h2::after {
+    width: 40px;
+  }
+
+  h3 {
+    font-size: calc(var(--md-font-size) * 1.1);
+    padding-left: 12px;
+  }
+
+  h4, h5, h6 {
+    margin: 1.2em 8px 0.3em;
+  }
+
+  p, li, blockquote {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}

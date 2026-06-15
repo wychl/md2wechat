@@ -1,0 +1,268 @@
+/**
+ * MD 赛博朋克主题
+ * 暗色霓虹、高对比的未来风格，适合科技资讯、赛博朋克文化类文章
+ * 依赖 base.css 的基础样式和 CSS 变量
+ */
+
+/* ==================== 主题色变量覆盖 ==================== */
+:root {
+  --md-primary-color: #00f0ff;
+  --md-cyber-accent: #ff00aa;
+  --md-cyber-bg: #0d0b1a;
+  --md-cyber-card: #1a1730;
+  --md-cyber-glow: rgba(0, 240, 255, 0.15);
+  --md-cyber-border: rgba(0, 240, 255, 0.25);
+  --md-cyber-text: #e0dfff;
+}
+
+/* ==================== 页面级公众号风格 ==================== */
+
+/* 深色页面底色 */
+body {
+  background-color: #0a0a12;
+}
+
+/* 深色卡片容器 */
+#output {
+  max-width: 660px;
+  margin: 0 auto;
+  background: var(--md-cyber-card);
+  padding: 1.8rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.08);
+}
+
+/* ==================== 标题样式 ==================== */
+h1 {
+  display: block;
+  margin: 0.6em 0 1.4em;
+  padding-bottom: 0.5em;
+  border-bottom: 3px solid var(--md-primary-color);
+  font-size: calc(var(--md-font-size) * 1.65);
+  font-weight: 800;
+  color: var(--md-primary-color);
+  text-align: center;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+h2 {
+  display: block;
+  margin: 3.5em 0 1.8em;
+  padding: 0.6em 0 0.7em;
+  background: rgba(0, 240, 255, 0.06);
+  color: var(--md-primary-color);
+  font-size: calc(var(--md-font-size) * 1.45);
+  font-weight: 800;
+  text-align: center;
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  border-radius: 6px;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--md-primary-color), var(--md-cyber-accent));
+  border-radius: 2px;
+  margin: 0.5em auto 0;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+}
+
+h3 {
+  padding: 0.3em 0 0.3em 14px;
+  border-left: 5px solid var(--md-cyber-accent);
+  margin: 2.2em 0 0.6em;
+  color: var(--md-cyber-text);
+  font-size: calc(var(--md-font-size) * 1.2);
+  font-weight: 700;
+  line-height: 1.35;
+  text-shadow: 0 0 8px rgba(255, 0, 170, 0.15);
+}
+
+h4 {
+  margin: 2em 8px 0.5em;
+  color: var(--md-cyber-accent);
+  font-size: calc(var(--md-font-size) * 1);
+  font-weight: bold;
+}
+
+h5 {
+  margin: 1.5em 8px 0.5em;
+  color: var(--md-primary-color);
+  font-size: calc(var(--md-font-size) * 1);
+  font-weight: bold;
+}
+
+h6 {
+  margin: 1.5em 8px 0.5em;
+  font-size: calc(var(--md-font-size) * 1);
+  color: var(--md-cyber-text);
+  opacity: 0.6;
+}
+
+/* ==================== 正文段落 ==================== */
+p {
+  margin: 1em 0;
+  letter-spacing: 0.02em;
+  color: var(--md-cyber-text);
+}
+
+/* ==================== 引用块 ==================== */
+blockquote {
+  margin: 1.2em 0;
+  padding: 0.8em 1em;
+  border-left: 4px solid var(--md-primary-color);
+  background: rgba(0, 240, 255, 0.04);
+  border-radius: 0 6px 6px 0;
+  color: var(--md-cyber-text);
+  border-left-color: var(--md-primary-color);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.04);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==================== 列表项 ==================== */
+li {
+  margin: 0.2em 8px;
+  color: var(--md-cyber-text);
+}
+
+/* ==================== 链接 ==================== */
+a {
+  color: var(--md-primary-color);
+  text-decoration: none;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+  text-decoration: none;
+}
+
+/* ==================== 粗体 ==================== */
+strong {
+  color: var(--md-primary-color);
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.15);
+}
+
+/* ==================== 代码 ==================== */
+code {
+  color: #ff9f43;
+  background: rgba(255, 159, 67, 0.1);
+}
+
+pre {
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  background: #0d0b1a;
+  border-radius: 6px;
+  padding: 1em;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  color: #ff9f43;
+  text-shadow: 0 0 4px rgba(255, 159, 67, 0.1);
+}
+
+/* ==================== 表格 ==================== */
+table {
+  border-collapse: collapse;
+  margin: 1.25em 0;
+  font-size: 0.95em;
+}
+
+th {
+  background: rgba(0, 240, 255, 0.08);
+  color: var(--md-primary-color);
+  border-bottom: 2px solid var(--md-primary-color);
+  font-weight: 600;
+  padding: 0.6em 1em;
+  text-align: left;
+}
+
+td {
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  padding: 0.6em 1em;
+  color: var(--md-cyber-text);
+}
+
+tr:nth-child(even) {
+  background: rgba(0, 240, 255, 0.02);
+}
+
+/* ==================== 图片 ==================== */
+img {
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(0, 240, 255, 0.06);
+}
+
+img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
+}
+
+figcaption,
+.md-figcaption {
+  text-align: center;
+  color: var(--md-cyber-text);
+  opacity: 0.5;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+}
+
+/* ==================== 分割线 ==================== */
+hr {
+  margin: 1.8em 0;
+  height: 1px;
+  border: none;
+  background: linear-gradient(to right, transparent, var(--md-primary-color), var(--md-cyber-accent), transparent);
+  box-shadow: 0 0 6px rgba(0, 240, 255, 0.1);
+}
+
+/* ==================== 响应式：小屏幕适配 ==================== */
+@media (max-width: 640px) {
+  #output {
+    padding: 1.2rem 0.8rem;
+  }
+
+  h1 {
+    font-size: calc(var(--md-font-size) * 1.4);
+  }
+
+  h2 {
+    font-size: calc(var(--md-font-size) * 1.25);
+    margin: 2.8em 0 1.4em;
+    padding: 0.5em 0 0.6em;
+  }
+
+  h2::after {
+    width: 40px;
+    height: 3px;
+  }
+
+  h3 {
+    font-size: calc(var(--md-font-size) * 1.1);
+    padding-left: 12px;
+    border-left-width: 4px;
+  }
+
+  h4, h5, h6 {
+    margin: 1.2em 8px 0.3em;
+  }
+
+  p, li, blockquote {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}
