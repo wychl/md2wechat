@@ -14,13 +14,8 @@ type Theme struct {
 	MainCSS string
 }
 
-// Load 加载主题 CSS（包含 base.css 和主题特定 CSS）
+// Load 加载主题 CSS（主题特定 CSS）
 func Load(name string) (string, error) {
-	baseCSS, err := themeFS.ReadFile("themes/base.css")
-	if err != nil {
-		return "", fmt.Errorf("读取 base.css 失败: %w", err)
-	}
-
 	themeCSS, err := themeFS.ReadFile("themes/" + name + ".css")
 	if err != nil {
 		// 如果主题不存在，回退到 default
@@ -34,7 +29,7 @@ func Load(name string) (string, error) {
 		}
 	}
 
-	return string(baseCSS) + "\n" + string(themeCSS), nil
+	return string(themeCSS), nil
 }
 
 // GenerateStyle 生成最终的样式块

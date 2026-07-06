@@ -1,131 +1,189 @@
 /**
- * MD 清新绿主题
+ * 清新绿主题 · 公众号安全版
  * 自然、清爽的绿色调，适合技术文档或生活类文章
- * 依赖 base.css 的基础样式和 CSS 变量
+ * 
  */
 
-/* 覆盖主题色变量 */
+/* ==================== 主题变量 ==================== */
 :root {
-  --md-primary-color: #27ae60;
-  --md-secondary-green: #2ecc71;
-  --md-light-green-bg: #eafaf1;
+  --md-primary-color: #27ae60;      /* 主绿色 */
+  --md-secondary-green: #2ecc71;    /* 亮绿点缀 */
+  --md-light-green-bg: #eafaf1;     /* 浅绿背景（引用块、表头） */
+  --md-text-color: #2c3e50;         /* 正文颜色 */
+  --md-link-color: #27ae60;         /* 链接色 */
+  --md-code-color: #1e6f3f;         /* 行内代码文字 */
+  --md-code-bg: #e6f9ee;            /* 行内代码背景（替代 rgba） */
+  --md-pre-bg: #f9fefb;             /* 代码块背景 */
+  --md-pre-border: #c8e6c9;         /* 代码块边框（替代 rgba） */
+  --md-blockquote-border: #27ae60;
+  --md-blockquote-bg: #eafaf1;
+  --md-table-header-bg: #eafaf1;
+  --md-table-border: #c8e6c9;
+  --md-hr-color: #27ae60;
+  --md-strong-color: #27ae60;
+  --md-img-border: #c8e6c9;
+  --md-muted-text: #6a737d;         /* 次要文字 */
+  --md-font-mono: 'Courier New', monospace;
 }
 
-/* ==================== 标题样式 ==================== */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* ==================== 页面容器 ==================== */
+body {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 8px 4px;               /* px 替代 rem */
+  font-size: 16px;
+  color: var(--md-text-color);
+}
+
+/* ==================== 标题 ==================== */
+h1, h2, h3, h4, h5, h6 {
   color: var(--md-primary-color);
 }
 
 h1 {
   border-bottom: 2px solid var(--md-primary-color);
-  padding-bottom: 0.3em;
+  padding-bottom: 12px;
+  margin: 24px 0 16px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
 }
 
 h2 {
   border-bottom: 1px solid var(--md-primary-color);
-  padding-bottom: 0.2em;
+  padding-bottom: 8px;
+  margin: 36px 0 16px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 h3 {
   border-left: 4px solid var(--md-primary-color);
   padding-left: 12px;
+  margin: 28px 0 10px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+h4, h5, h6 {
+  margin: 20px 0 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* ==================== 正文 ==================== */
+p {
+  margin: 16px 0;
+  line-height: 1.75;
 }
 
 /* ==================== 引用块 ==================== */
 blockquote {
-  border-left-color: var(--md-primary-color);
-  background-color: var(--md-light-green-bg);
-  color: #2c3e2f;
+  border-left: 4px solid var(--md-blockquote-border);
+  background-color: var(--md-blockquote-bg);
+  color: #2c3e2f;                      /* 深绿灰，保持可读性 */
+  padding: 12px 16px;
+  margin: 20px 0;
 }
 
-/* 嵌套引用块更深色背景 */
+/* 嵌套引用块更深色背景（保留原设计） */
 blockquote blockquote {
   background-color: #d5f5e3;
 }
 
-/* GFM Alert 也将应用绿色主题 */
-.markdown-alert {
-  border-left-color: var(--md-primary-color) !important;
-}
-
 /* ==================== 链接 ==================== */
 a {
-  color: var(--md-primary-color);
-  border-bottom-color: rgba(39, 174, 96, 0.3);
-}
-a:hover {
-  color: var(--md-secondary-green);
-  border-bottom-color: var(--md-secondary-green);
+  color: var(--md-link-color);
+  text-decoration: none;
 }
 
-/* ==================== 代码 ==================== */
-/* 行内代码背景微绿 */
+/* ==================== 粗体 ==================== */
+strong {
+  color: var(--md-strong-color);
+  font-weight: bold;
+}
+
+/* ==================== 行内代码 ==================== */
 code {
-  background-color: rgba(39, 174, 96, 0.08);
-  color: #1e6f3f;
+  background-color: var(--md-code-bg);
+  color: var(--md-code-color);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--md-font-mono);
+  font-size: 14px;
 }
 
-/* 代码块边框微绿 */
+/* ==================== 代码块 ==================== */
 pre {
-  border: 1px solid rgba(39, 174, 96, 0.15);
-  background-color: #f9fefb;
+  border: 1px solid var(--md-pre-border);
+  background-color: var(--md-pre-bg);
+  padding: 16px;
+  white-space: pre-wrap;            /* 替代 overflow-x: auto */
+  word-break: break-all;
+  font-family: var(--md-font-mono);
+  font-size: 14px;
+  color: var(--md-text-color);
+  line-height: 1.6;
+  margin: 20px 0;
 }
 
-/* ==================== 列表标记 ==================== */
-ul li::before {
-  color: var(--md-primary-color);
-}
-
-/* 任务列表复选框 */
-.task-list-item input[type="checkbox"]:checked {
-  background-color: var(--md-primary-color);
-  border-color: var(--md-primary-color);
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
 }
 
 /* ==================== 表格 ==================== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
 th {
-  background-color: var(--md-light-green-bg);
+  background-color: var(--md-table-header-bg);
   color: var(--md-primary-color);
-  border-bottom-color: var(--md-primary-color);
+  border-bottom: 2px solid var(--md-primary-color);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
 }
 
-tr:nth-child(even) {
-  background-color: rgba(39, 174, 96, 0.03);
+td {
+  border: 1px solid var(--md-table-border);
+  padding: 10px 12px;
+  color: var(--md-text-color);
 }
 
-/* ==================== 按钮或强调元素 ==================== */
-strong {
-  color: var(--md-primary-color);
-}
-
-.markup-highlight {
-  background-color: var(--md-primary-color);
-  color: white;
-}
-
-/* ==================== 阅读时间组件 ==================== */
-.reading-time {
-  border-left-color: var(--md-primary-color);
-  background-color: var(--md-light-green-bg);
-}
-
-/* ==================== 分隔线 ==================== */
-hr {
-  background: linear-gradient(to right, transparent, var(--md-primary-color), transparent);
-}
-
-/* ==================== 图片边框 ==================== */
+/* ==================== 图片 ==================== */
 img {
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(39, 174, 96, 0.1);
+  border-radius: 4px;
+  border: 1px solid var(--md-img-border);
+  max-width: 100%;
+  height: auto;
 }
 
-/* ==================== 脚注 ==================== */
-.footnotes {
-  border-top-color: rgba(39, 174, 96, 0.2);
+/* 图片说明 */
+figcaption,
+.md-figcaption {
+  text-align: center;
+  color: var(--md-muted-text);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* ==================== 分割线 ==================== */
+hr {
+  margin: 25px 0;
+  height: 1px;
+  border: none;
+  background-color: var(--md-hr-color);   /* 单色替代渐变 */
+}
+
+/* ==================== 列表 ==================== */
+li {
+  margin: 4px 8px;
+  color: var(--md-text-color);
 }

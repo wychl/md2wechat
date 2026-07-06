@@ -39,7 +39,6 @@ func run() {
 	result, err := convert.Convert(content, convert.Options{
 		Theme:        cfg.Theme,
 		PrimaryColor: cfg.PrimaryColor,
-		ReadingTime:  cfg.ReadingTime,
 	})
 	if err != nil {
 		outputJSONError(cfg, fmt.Errorf("转换 Markdown 失败: %w", err))

@@ -31,3 +31,4 @@ go.work.sum
 
 # project temporary files
 *.html  
+out/*

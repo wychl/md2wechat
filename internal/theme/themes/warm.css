@@ -1,42 +1,58 @@
 /**
- * MD 暖橙主题
- * 温暖、活力的橙色系，适合生活随笔、创意类文章
- * 依赖 base.css 的基础样式和 CSS 变量
+ * 暖橙主题 · 公众号安全版
+ * 温暖活力的橙色系，适合生活随笔、创意类文章
+ * 
  */
 
-/* ==================== 主题色变量覆盖 ==================== */
+/* ==================== 主题变量 ==================== */
 :root {
-  --md-primary-color: #e67e22;
-  --md-warm-light: #fef5e8;
-  --md-warm-accent: #f39c12;
-  --md-warm-border: rgba(230, 126, 34, 0.2);
-  --md-warm-text: #c45c0a;
+  --md-primary-color: #e67e22;        /* 主橙色 */
+  --md-accent-color: #f39c12;         /* 亮橙点缀 */
+  --md-bg-warm: #fef5e8;              /* 暖浅橙背景（卡片、引用） */
+  --md-text-color: #2c3e50;           /* 正文深色 */
+  --md-light-text: #6a737d;           /* 次要文字 */
+  --md-link-color: #e67e22;           /* 链接色 */
+  --md-code-color: #c45c0a;           /* 行内代码文字 */
+  --md-code-bg: #fef1dd;              /* 行内代码背景（替代 rgba） */
+  --md-pre-bg: #fefaf5;               /* 代码块背景 */
+  --md-pre-border: #f0cf9e;           /* 代码块边框（替代 rgba） */
+  --md-blockquote-bg: #fef5e8;
+  --md-blockquote-border: #e67e22;
+  --md-table-header-bg: #fef5e8;
+  --md-table-border: #f0cf9e;
+  --md-hr-color: #e67e22;
+  --md-strong-color: #e67e22;
+  --md-img-border: #f0cf9e;
+  --md-muted: #9a8a7c;
+  --md-font-mono: 'Courier New', monospace;
+
+  /* 间距（px 统一） */
+  --md-p-margin: 16px 0;
+  --md-h1-margin: 20px 0 22px;
+  --md-h2-margin: 40px 0 20px;
+  --md-h3-margin: 28px 0 8px;
+  --md-h4-margin: 20px 8px 8px;
+  --md-blockquote-margin: 20px 0;
+  --md-blockquote-padding: 12px 16px;
+  --md-pre-padding: 16px;
+  --md-table-cell-padding: 10px 12px;
 }
 
-/* ==================== 页面级公众号风格 ==================== */
-
-/* 浅灰页面底色 */
+/* ==================== 页面容器 ==================== */
 body {
-  background-color: #f5f5f5;
-}
-
-/* 白色卡片容器 */
-#output {
   max-width: 660px;
   margin: 0 auto;
-  background: #fff;
-  padding: 1.8rem 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 8px 4px;
+  font-size: 16px;
+  color: var(--md-text-color);
 }
 
-/* ==================== 标题样式 ==================== */
+/* ==================== 标题 ==================== */
 h1 {
-  display: block;
-  margin: 0.6em 0 1.4em;
-  padding-bottom: 0.5em;
+  margin: var(--md-h1-margin);
+  padding-bottom: 10px;
   border-bottom: 3px solid var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1.65);
+  font-size: 26px;
   font-weight: 800;
   color: var(--md-text-color);
   text-align: center;
@@ -44,12 +60,11 @@ h1 {
 }
 
 h2 {
-  display: block;
-  margin: 3.5em 0 1.8em;
-  padding: 0.6em 0 0.7em;
-  background: var(--md-warm-light);
+  margin: var(--md-h2-margin);
+  padding: 12px 0;
+  background-color: var(--md-bg-warm);
   color: var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1.45);
+  font-size: 22px;
   font-weight: 800;
   text-align: center;
   border: none;
@@ -57,190 +72,156 @@ h2 {
   letter-spacing: 0.06em;
 }
 
-h2::after {
-  content: '';
-  display: block;
-  width: 52px;
-  height: 4px;
-  background: var(--md-primary-color);
-  border-radius: 2px;
-  margin: 0.45em auto 0;
-}
+/* 原 h2::after 装饰线 → 请在 Markdown 中手动插入：
+   <hr style="width:52px; height:4px; background-color:#e67e22; border:none; margin:0 auto 25px;">
+*/
 
 h3 {
-  padding: 0.3em 0 0.3em 14px;
   border-left: 5px solid var(--md-primary-color);
-  margin: 2.2em 0 0.6em;
+  padding: 4px 0 4px 14px;
+  margin: var(--md-h3-margin);
   color: var(--md-text-color);
-  font-size: calc(var(--md-font-size) * 1.2);
+  font-size: 19px;
   font-weight: 700;
   line-height: 1.35;
 }
 
 h4 {
-  margin: 2em 8px 0.5em;
+  margin: var(--md-h4-margin);
   padding-left: 10px;
   border-left: 2px solid var(--md-primary-color);
   color: var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1);
+  font-size: 16px;
   font-weight: bold;
 }
 
 h5 {
-  margin: 1.5em 8px 0.5em;
+  margin: var(--md-h4-margin);
   color: var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1);
+  font-size: 16px;
   font-weight: bold;
 }
 
 h6 {
-  margin: 1.5em 8px 0.5em;
-  font-size: calc(var(--md-font-size) * 1);
+  margin: var(--md-h4-margin);
+  font-size: 16px;
   color: var(--md-primary-color);
 }
 
 /* ==================== 正文段落 ==================== */
 p {
-  margin: 1em 0;
+  margin: var(--md-p-margin);
   letter-spacing: 0.02em;
   color: var(--md-text-color);
+  line-height: 1.75;
 }
 
 /* ==================== 引用块 ==================== */
 blockquote {
-  margin: 1.2em 0;
-  padding: 0.8em 1em;
-  border-left: 4px solid var(--md-primary-color);
-  background: var(--md-warm-light);
-  border-radius: 0 6px 6px 0;
-  color: #5a3e1b;
+  margin: var(--md-blockquote-margin);
+  padding: var(--md-blockquote-padding);
+  border-left: 4px solid var(--md-blockquote-border);
+  background-color: var(--md-blockquote-bg);
+  color: #5a3e1b;                     /* 暖棕文字，温暖沉稳 */
 }
 
 blockquote p:last-child {
   margin-bottom: 0;
 }
 
-/* ==================== 列表项 ==================== */
+/* ==================== 列表 ==================== */
 li {
-  margin: 0.2em 8px;
+  margin: 4px 8px;
   color: var(--md-text-color);
 }
 
 /* ==================== 链接 ==================== */
 a {
-  color: var(--md-primary-color);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-a:hover {
-  color: var(--md-warm-accent);
+  color: var(--md-link-color);
   text-decoration: none;
 }
 
 /* ==================== 粗体 ==================== */
 strong {
-  color: var(--md-primary-color);
+  color: var(--md-strong-color);
   font-weight: bold;
 }
 
-/* ==================== 代码 ==================== */
+/* ==================== 行内代码 ==================== */
 code {
-  color: var(--md-warm-text);
-  background: rgba(230, 126, 34, 0.08);
+  color: var(--md-code-color);
+  background-color: var(--md-code-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--md-font-mono);
+  font-size: 14px;
 }
 
+/* ==================== 代码块 ==================== */
 pre {
-  border: 1px solid var(--md-warm-border);
-  background: #fefaf5;
-  border-radius: 6px;
-  padding: 1em;
-  overflow-x: auto;
+  border: 1px solid var(--md-pre-border);
+  background-color: var(--md-pre-bg);
+  padding: var(--md-pre-padding);
+  white-space: pre-wrap;             /* 替代 overflow-x: auto */
+  word-break: break-all;
+  font-family: var(--md-font-mono);
+  font-size: 14px;
+  color: var(--md-text-color);
+  line-height: 1.6;
+  margin: 20px 0;
 }
 
 pre code {
   background: none;
+  padding: 0;
   color: inherit;
 }
 
 /* ==================== 表格 ==================== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
 th {
-  background: var(--md-warm-light);
+  background-color: var(--md-table-header-bg);
   color: var(--md-primary-color);
   border-bottom: 2px solid var(--md-primary-color);
   font-weight: 600;
-  padding: 0.6em 1em;
+  padding: var(--md-table-cell-padding);
   text-align: left;
 }
 
 td {
-  border: 1px solid var(--md-warm-border);
-  padding: 0.6em 1em;
+  border: 1px solid var(--md-table-border);
+  padding: var(--md-table-cell-padding);
+  color: var(--md-text-color);
 }
 
-tr:nth-child(even) {
-  background: rgba(230, 126, 34, 0.03);
-}
+/* 隔行变色已移除，保持简洁 */
 
 /* ==================== 图片 ==================== */
 img {
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(230, 126, 34, 0.1);
-  transition: transform 0.2s ease;
-}
-
-img:hover {
-  transform: scale(1.01);
+  border-radius: 4px;
+  border: 1px solid var(--md-img-border);
+  max-width: 100%;
+  height: auto;
 }
 
 figcaption,
 .md-figcaption {
   text-align: center;
   color: var(--md-light-text);
-  font-size: 0.8em;
-  margin-top: 0.5em;
+  font-size: 13px;
+  margin-top: 8px;
 }
 
 /* ==================== 分割线 ==================== */
 hr {
-  margin: 1.8em 0;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--md-primary-color), transparent);
+  margin: 25px 0;
+  height: 1px;
   border: none;
-}
-
-/* ==================== 响应式：小屏幕适配 ==================== */
-@media (max-width: 640px) {
-  #output {
-    padding: 1.2rem 0.8rem;
-  }
-
-  h1 {
-    font-size: calc(var(--md-font-size) * 1.4);
-  }
-
-  h2 {
-    font-size: calc(var(--md-font-size) * 1.25);
-    margin: 2.8em 0 1.4em;
-    padding: 0.5em 0 0.6em;
-  }
-
-  h2::after {
-    width: 40px;
-    height: 3px;
-  }
-
-  h3 {
-    font-size: calc(var(--md-font-size) * 1.1);
-    padding-left: 12px;
-    border-left-width: 4px;
-  }
-
-  h4, h5, h6 {
-    margin: 1.2em 8px 0.3em;
-  }
-
-  p, li, blockquote {
-    margin-left: 4px;
-    margin-right: 4px;
-  }
+  background-color: var(--md-hr-color);
 }

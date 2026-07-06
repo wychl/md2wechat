@@ -1,0 +1,216 @@
+/**
+ * 佛学调性 · 极简背景版（公众号安全版）
+ * 极简暖色背景，仅保留标题和高亮区域的底色
+ * 
+ */
+
+/* ==================== 主题变量 ==================== */
+:root {
+  --md-primary-color: #B8944C;      /* 深金色 */
+  --md-text-color: #3C2E22;         /* 暖褐正文 */
+  --md-light-text: #6B5F53;         /* 中褐辅助文字 */
+  --md-border-color: #E5DDD0;       /* 浅褐边框 */
+  --md-bg-warm: #F9F2E8;            /* H2 背景淡米色 */
+  --md-bg-quote: #FCF8F2;           /* 引用块背景淡暖白 */
+  --md-link-color: #B8944C;
+  --md-strong-color: #B8944C;
+  --md-hr-color: #B8944C;
+  --md-font-serif: "Noto Serif SC", serif;
+  --md-font-size: 16px;
+  --md-line-height: 1.8;
+
+  /* 间距 px */
+  --md-h1-margin: 20px 0 22px;
+  --md-h2-margin: 40px 0 20px;
+  --md-h3-margin: 28px 0 8px;
+  --md-h4-margin: 20px 0 8px;
+  --md-p-margin: 16px 0;
+  --md-blockquote-margin: 20px 0;
+  --md-blockquote-padding: 12px 16px;
+  --md-pre-padding: 8px 0;
+  --md-table-cell-padding: 10px 12px;
+}
+
+/* ==================== 页面容器 ==================== */
+body {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 8px 4px;                /* px 替代 rem */
+  font-family: var(--md-font-serif);
+  font-size: var(--md-font-size);
+  color: var(--md-text-color);
+  line-height: var(--md-line-height);
+}
+
+/* ==================== 标题 ==================== */
+h1 {
+  margin: var(--md-h1-margin);
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--md-primary-color);
+  font-size: 26px;                 /* 16 * 1.65 ≈ 26 */
+  font-weight: 800;
+  color: var(--md-text-color);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+h2 {
+  margin: var(--md-h2-margin);
+  padding: 12px 0;
+  background-color: var(--md-bg-warm);
+  color: var(--md-primary-color);
+  font-size: 23px;                 /* 16 * 1.45 ≈ 23 */
+  font-weight: 800;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  letter-spacing: 0.06em;
+}
+
+h3 {
+  border-left: 5px solid var(--md-primary-color);
+  padding: 4px 0 4px 14px;
+  margin: var(--md-h3-margin);
+  color: var(--md-text-color);
+  font-size: 19px;                 /* 16 * 1.2 ≈ 19 */
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+h4, h5, h6 {
+  margin: var(--md-h4-margin);
+  color: var(--md-primary-color);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ==================== 正文段落 ==================== */
+p {
+  margin: var(--md-p-margin);
+  letter-spacing: 0.02em;
+  color: var(--md-text-color);
+  line-height: var(--md-line-height);
+}
+
+/* 首段首字母放大已不可用，如需可手动包裹 <span> 设置行内样式 */
+
+/* ==================== 引用块（保留背景） ==================== */
+blockquote {
+  margin: var(--md-blockquote-margin);
+  padding: var(--md-blockquote-padding);
+  border-left: 4px solid var(--md-primary-color);
+  background-color: var(--md-bg-quote);
+  color: var(--md-text-color);
+  font-style: italic;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==================== 列表 ==================== */
+ul, ol {
+  margin: 0 0 20px 24px;
+}
+
+li {
+  margin: 4px 0;
+  padding: 0px; text-align: left;
+  color: var(--md-text-color);
+}
+
+ul li strong {
+    display: inline !important;
+}
+
+/* ==================== 链接 ==================== */
+a {
+  color: var(--md-link-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;   /* 保持原结构，hover 无效 */
+}
+
+/* ==================== 粗体 ==================== */
+strong {
+  color: var(--md-strong-color);
+  font-weight: 700;
+}
+
+/* ==================== 行内代码（无背景） ==================== */
+code {
+  color: #B8944C;
+  background: transparent;
+  padding: 2px 6px;
+  border-radius: 0;
+  font-size: 14px;
+}
+
+/* ==================== 代码块（无背景） ==================== */
+pre {
+  background: transparent;
+  border: none;
+  padding: var(--md-pre-padding);
+  white-space: pre-wrap;            /* 替代 overflow-x: auto */
+  word-break: break-all;
+  font-size: 14px;
+  color: var(--md-text-color);
+  line-height: 1.6;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* ==================== 表格（无背景） ==================== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid var(--md-border-color);
+  padding: var(--md-table-cell-padding);
+  text-align: left;
+}
+
+th {
+  background: transparent;
+  color: var(--md-text-color);
+  font-weight: 600;
+}
+
+/* ==================== 图片 ==================== */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--md-border-color);
+}
+
+figcaption,
+.md-figcaption {
+  text-align: center;
+  color: var(--md-light-text);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* ==================== 分割线 ==================== */
+hr {
+  margin: 25px 0;
+  height: 2px;                     /* 保留原高度 */
+  border: none;
+  background-color: var(--md-hr-color);   /* 单色替代渐变 */
+}
+
+/* ==================== 脚注 ==================== */
+.footnotes {
+  border-top: 2px solid var(--md-primary-color);
+  padding-top: 20px;
+  margin-top: 32px;
+  font-size: 14px;
+}

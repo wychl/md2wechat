@@ -12,7 +12,6 @@ import (
 type Config struct {
 	Theme        string
 	PrimaryColor string
-	ReadingTime  bool
 	OutputFile   string
 	InputFile    string
 	Help         bool
@@ -69,7 +68,6 @@ func Load() (*Config, error) {
 	cfg := &Config{
 		Theme:        v.GetString("theme"),
 		PrimaryColor: v.GetString("color"),
-		ReadingTime:  v.GetBool("reading-time"),
 		OutputFile:   v.GetString("output"),
 		Help:         v.GetBool("help"),
 		SkillMode:    v.GetBool("skill"),

@@ -1,122 +1,116 @@
 /**
- * MD AI 科技主题
- * 科技感、未来风的蓝紫调，适合 AI 日报、科技资讯类文章
- * 依赖 base.css 的基础样式和 CSS 变量
+ * AI 科技主题 · 公众号安全版
+ * 科技感蓝紫色调，适合 AI 日报、科技资讯
+ * 
  */
 
-/* ==================== 主题色变量覆盖 ==================== */
+/* ==================== 主题变量 ==================== */
 :root {
-  --md-primary-color: #6C5CE7;
-  --md-ai-accent: #a29bfe;
-  --md-ai-bg: #f4f2ff;
-  --md-ai-glow: rgba(108, 92, 231, 0.12);
-  --md-ai-border: rgba(108, 92, 231, 0.2);
-  --md-ai-text: #4a3f8a;
+  --md-primary-color: #6C5CE7;        /* 主紫色 */
+  --md-accent-color: #a29bfe;         /* 浅紫点缀 */
+  --md-bg-light: #f4f2ff;             /* 浅紫背景（卡片、引用） */
+  --md-text-color: #2c3e50;           /* 正文深色 */
+  --md-light-text: #6a737d;           /* 次要文字 */
+  --md-link-color: #6C5CE7;           /* 链接色 */
+  --md-code-color: #4a3f8a;           /* 行内代码文字（深紫） */
+  --md-code-bg: #ece9ff;              /* 行内代码背景（替代 rgba） */
+  --md-pre-bg: #f8f7ff;               /* 代码块背景 */
+  --md-pre-border: #d5d0f5;           /* 代码块边框（替代 rgba） */
+  --md-blockquote-bg: #f4f2ff;
+  --md-blockquote-border: #6C5CE7;
+  --md-table-header-bg: #f4f2ff;
+  --md-table-border: #d5d0f5;
+  --md-hr-color: #6C5CE7;
+  --md-strong-color: #6C5CE7;
+  --md-img-border: #d5d0f5;
+  --md-font-mono: 'Courier New', monospace;
+
+  /* 间距（px） */
+  --md-p-margin: 16px 0;
+  --md-h1-margin: 20px 0 22px;
+  --md-h2-margin: 40px 0 20px;
+  --md-h3-margin: 28px 0 8px;
+  --md-h4-margin: 20px 8px 8px;
+  --md-blockquote-margin: 20px 0;
+  --md-blockquote-padding: 12px 16px;
+  --md-pre-padding: 16px;
+  --md-table-cell-padding: 10px 12px;
 }
 
-/* ==================== 页面级公众号风格 ==================== */
-
-/* 浅灰页面底色 */
+/* ==================== 页面容器 ==================== */
 body {
-  background-color: #f5f5f5;
-}
-
-/* 白色卡片容器 */
-#output {
   max-width: 660px;
   margin: 0 auto;
-  background: #fff;
-  padding: 1.8rem 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 8px 4px;
+  font-size: 16px;
+  color: var(--md-text-color);
 }
 
-/* ==================== 标题样式 ==================== */
+/* ==================== 标题 ==================== */
 h1 {
-  display: block;
-  margin: 0.6em 0 1.4em;
-  padding-bottom: 0.5em;
+  margin: var(--md-h1-margin);
+  padding-bottom: 12px;
   border-bottom: 3px solid var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1.65);
+  font-size: 26px;
   font-weight: 800;
-  color: var(--md-text-color);
+  color: var(--md-primary-color);       /* 用纯色代替原渐变文字 */
   text-align: center;
   letter-spacing: 0.04em;
-  background: linear-gradient(135deg, var(--md-primary-color), var(--md-ai-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 h2 {
-  display: block;
-  margin: 3.5em 0 1.8em;
-  padding: 0.6em 0 0.7em;
-  background: var(--md-ai-bg);
+  margin: var(--md-h2-margin);
+  padding: 12px 0;
+  background-color: var(--md-bg-light);
   color: var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1.45);
+  font-size: 22px;
   font-weight: 800;
   text-align: center;
   border: none;
   border-radius: 6px;
   letter-spacing: 0.06em;
-  box-shadow: 0 2px 8px var(--md-ai-glow);
 }
 
-h2::after {
-  content: '';
-  display: block;
-  width: 52px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--md-primary-color), var(--md-ai-accent));
-  border-radius: 2px;
-  margin: 0.45em auto 0;
-}
+/* 原 h2::after 渐变装饰线 → 请在 Markdown 中手动插入：
+   <hr style="width:52px; height:4px; background-color:#6C5CE7; border:none; margin:0 auto 25px;">
+   如需双色效果，可用两段叠加，但微信不支持渐变，单色是最稳方案
+*/
 
 h3 {
-  padding: 0.3em 0 0.3em 14px;
   border-left: 5px solid var(--md-primary-color);
-  margin: 2.2em 0 0.6em;
+  padding: 4px 0 4px 14px;
+  margin: var(--md-h3-margin);
   color: var(--md-text-color);
-  font-size: calc(var(--md-font-size) * 1.2);
+  font-size: 19px;
   font-weight: 700;
   line-height: 1.35;
 }
 
-h4 {
-  margin: 2em 8px 0.5em;
+h4, h5, h6 {
+  margin: var(--md-h4-margin);
   color: var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1);
-  font-weight: bold;
-}
-
-h5 {
-  margin: 1.5em 8px 0.5em;
-  color: var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1);
+  font-size: 16px;
   font-weight: bold;
 }
 
 h6 {
-  margin: 1.5em 8px 0.5em;
-  font-size: calc(var(--md-font-size) * 1);
-  color: var(--md-primary-color);
+  color: var(--md-light-text);
 }
 
 /* ==================== 正文段落 ==================== */
 p {
-  margin: 1em 0;
+  margin: var(--md-p-margin);
   letter-spacing: 0.02em;
   color: var(--md-text-color);
+  line-height: 1.75;
 }
 
 /* ==================== 引用块 ==================== */
 blockquote {
-  margin: 1.2em 0;
-  padding: 0.8em 1em;
-  border-left: 4px solid var(--md-primary-color);
-  background: var(--md-ai-bg);
-  border-radius: 0 6px 6px 0;
+  margin: var(--md-blockquote-margin);
+  padding: var(--md-blockquote-padding);
+  border-left: 4px solid var(--md-blockquote-border);
+  background-color: var(--md-blockquote-bg);
   color: var(--md-text-color);
 }
 
@@ -124,127 +118,97 @@ blockquote p:last-child {
   margin-bottom: 0;
 }
 
-/* ==================== 列表项 ==================== */
+/* ==================== 列表 ==================== */
 li {
-  margin: 0.2em 8px;
+  margin: 4px 8px;
   color: var(--md-text-color);
 }
 
 /* ==================== 链接 ==================== */
 a {
-  color: var(--md-primary-color);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-a:hover {
-  color: var(--md-ai-accent);
+  color: var(--md-link-color);
   text-decoration: none;
 }
 
 /* ==================== 粗体 ==================== */
 strong {
-  color: var(--md-primary-color);
+  color: var(--md-strong-color);
   font-weight: bold;
 }
 
-/* ==================== 代码 ==================== */
+/* ==================== 行内代码 ==================== */
 code {
-  color: var(--md-ai-text);
-  background: rgba(108, 92, 231, 0.08);
+  color: var(--md-code-color);
+  background-color: var(--md-code-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--md-font-mono);
+  font-size: 14px;
 }
 
+/* ==================== 代码块 ==================== */
 pre {
-  border: 1px solid var(--md-ai-border);
-  background: #f8f7ff;
-  border-radius: 6px;
-  padding: 1em;
-  overflow-x: auto;
+  border: 1px solid var(--md-pre-border);
+  background-color: var(--md-pre-bg);
+  padding: var(--md-pre-padding);
+  white-space: pre-wrap;             /* 替代 overflow-x: auto */
+  word-break: break-all;
+  font-family: var(--md-font-mono);
+  font-size: 14px;
+  color: var(--md-text-color);
+  line-height: 1.6;
+  margin: 20px 0;
 }
 
 pre code {
   background: none;
+  padding: 0;
   color: inherit;
 }
 
 /* ==================== 表格 ==================== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
 th {
-  background: var(--md-ai-bg);
+  background-color: var(--md-table-header-bg);
   color: var(--md-primary-color);
   border-bottom: 2px solid var(--md-primary-color);
   font-weight: 600;
-  padding: 0.6em 1em;
+  padding: var(--md-table-cell-padding);
   text-align: left;
 }
 
 td {
-  border: 1px solid var(--md-ai-border);
-  padding: 0.6em 1em;
-}
-
-tr:nth-child(even) {
-  background: rgba(108, 92, 231, 0.03);
+  border: 1px solid var(--md-table-border);
+  padding: var(--md-table-cell-padding);
+  color: var(--md-text-color);
 }
 
 /* ==================== 图片 ==================== */
 img {
-  border-radius: 8px;
-  box-shadow: 0 2px 8px var(--md-ai-glow);
-  transition: transform 0.2s ease;
-}
-
-img:hover {
-  transform: scale(1.01);
+  border-radius: 4px;
+  border: 1px solid var(--md-img-border);
+  max-width: 100%;
+  height: auto;
 }
 
 figcaption,
 .md-figcaption {
   text-align: center;
   color: var(--md-light-text);
-  font-size: 0.8em;
-  margin-top: 0.5em;
+  font-size: 13px;
+  margin-top: 8px;
 }
 
 /* ==================== 分割线 ==================== */
 hr {
-  margin: 1.8em 0;
+  margin: 25px 0;
   height: 1px;
   border: none;
-  background: linear-gradient(to right, transparent, var(--md-primary-color), var(--md-ai-accent), transparent);
-}
-
-/* ==================== 响应式：小屏幕适配 ==================== */
-@media (max-width: 640px) {
-  #output {
-    padding: 1.2rem 0.8rem;
-  }
-
-  h1 {
-    font-size: calc(var(--md-font-size) * 1.4);
-  }
-
-  h2 {
-    font-size: calc(var(--md-font-size) * 1.25);
-    margin: 2.8em 0 1.4em;
-    padding: 0.5em 0 0.6em;
-  }
-
-  h2::after {
-    width: 40px;
-    height: 3px;
-  }
-
-  h3 {
-    font-size: calc(var(--md-font-size) * 1.1);
-    padding-left: 12px;
-    border-left-width: 4px;
-  }
-
-  h4, h5, h6 {
-    margin: 1.2em 8px 0.3em;
-  }
-
-  p, li, blockquote {
-    margin-left: 4px;
-    margin-right: 4px;
-  }
+  background-color: var(--md-hr-color);
 }

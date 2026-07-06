@@ -5,14 +5,16 @@ import (
 	"fmt"
 
 	"github.com/wychl/md2wechat/internal/frontmatter"
-	"github.com/wychl/md2wechat/internal/readingtime"
 	"github.com/wychl/md2wechat/internal/theme"
 	"github.com/yuin/goldmark"
+	emoji "github.com/yuin/goldmark-emoji"
 	highlighting "github.com/yuin/goldmark-highlighting/v2"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
+	"github.com/yuin/goldmark/renderer"
 	goldhtml "github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/text"
+	"github.com/yuin/goldmark/util"
 )
 
 // Result 定义转换结果（用于 JSON 输出）
@@ -20,8 +22,6 @@ type Result struct {
 	Success   bool   `json:"success"`
 	HTML      string `json:"html,omitempty"`
 	Title     string `json:"title,omitempty"`
-	Words     int    `json:"words,omitempty"`
-	Minutes   int    `json:"minutes,omitempty"`
 	ThemeUsed string `json:"theme_used,omitempty"`
 	Error     string `json:"error,omitempty"`
 }
@@ -34,18 +34,24 @@ type goldmarkConverter struct {
 func newGoldmarkConverter() *goldmarkConverter {
 	md := goldmark.New(
 		goldmark.WithExtensions(
+			emoji.Emoji,
 			extension.GFM,
 			extension.Footnote,
 			extension.TaskList,
 			extension.DefinitionList,
 			extension.Typographer,
 			extension.CJK,
+			extension.Table,
 			highlighting.NewHighlighting(
 				highlighting.WithStyle("github"),
 			),
+			NewCustomLiExtension(),
 		),
 		goldmark.WithRendererOptions(
 			goldhtml.WithUnsafe(),
+			renderer.WithNodeRenderers(
+				util.Prioritized(&customLiRenderer{}, 1000),
+			),
 		),
 	)
 	return &goldmarkConverter{md: md}
@@ -79,22 +85,10 @@ func Convert(input []byte, opts Options) (*Result, error) {
 		return &Result{Success: false, Error: err.Error()}, err
 	}
 
-	// 3. 阅读时间统计
-	words, minutes := 0, 0
-	if opts.ReadingTime {
-		words, minutes = readingtime.Estimate(string(body))
-	}
-
-	// 4. 生成 CSS 样式
+	// 3. 生成 CSS 样式
 	cssStyle := theme.GenerateStyle(opts.Theme, opts.PrimaryColor)
 
-	// 5. 阅读时间 HTML 片段
-	readingHTML := ""
-	if opts.ReadingTime {
-		readingHTML = fmt.Sprintf(`<div class="reading-time">📖 阅读时间：约 %d 分钟 (%d 字)</div>`, minutes, words)
-	}
-
-	// 6. 组装完整 HTML
+	// 4. 组装完整 HTML
 	fullHTML := fmt.Sprintf(`<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -104,21 +98,17 @@ func Convert(input []byte, opts Options) (*Result, error) {
     %s
 </head>
 <body>
-    <div id="output">
-        <section class="container">
-            %s
-            %s
-        </section>
+	<div>
+	    %s
+	</div>
     </div>
 </body>
-</html>`, title, cssStyle, readingHTML, htmlBody)
+</html>`, title, cssStyle, htmlBody)
 
 	return &Result{
 		Success:   true,
 		HTML:      fullHTML,
 		Title:     title,
-		Words:     words,
-		Minutes:   minutes,
 		ThemeUsed: opts.Theme,
 	}, nil
 }

@@ -1,278 +1,228 @@
 /**
- * MD 简洁主题
- * 简洁现代的设计风格，基于 base.css 扩展
- * 依赖 base.css 的基础样式和 CSS 变量
+ * 简洁主题 · 公众号安全版
+ * 简洁现代的设计，浅灰卡片，清晰边界
+ * 
  */
 
-/* ==================== 主题色变量覆盖 ==================== */
+/* ==================== 主题变量 ==================== */
 :root {
-  --md-primary-color: #5a6b7c;
-  --md-simple-bg: #f7f8fa;
-  --md-simple-shadow: rgba(90, 107, 124, 0.08);
-  --md-simple-border: rgba(90, 107, 124, 0.12);
+  --md-primary-color: #5a6b7c;        /* 主蓝灰色 */
+  --md-text-color: #2c3e50;           /* 正文深色 */
+  --md-light-text: #6a737d;           /* 次要文字、引用块 */
+  --md-bg-light: #f7f8fa;             /* 浅灰卡片背景 */
+  --md-border-color: #d1d5db;         /* 边框色（替代 rgba） */
+  --md-link-color: #576b95;           /* 微信蓝链接 */
+  --md-code-color: #5a6b7c;           /* 行内代码文字 */
+  --md-code-bg: #eef0f3;              /* 行内代码背景 */
+  --md-pre-bg: #f7f8fa;               /* 代码块背景 */
+  --md-pre-border: #d1d5db;           /* 代码块边框 */
+  --md-blockquote-bg: #f7f8fa;
+  --md-blockquote-border: #5a6b7c;
+  --md-table-header-bg: #f7f8fa;
+  --md-table-border: #d1d5db;
+  --md-hr-color: #5a6b7c;
+  --md-strong-color: #5a6b7c;
+  --md-img-border: #d1d5db;
+  --md-font-mono: 'Fira Code', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* 间距（全部使用 px） */
+  --md-p-margin: 16px 0;
+  --md-h1-margin: 20px 0 22px;
+  --md-h2-margin: 40px 0 20px;
+  --md-h3-margin: 28px 0 8px;
+  --md-h4-margin: 20px 8px 8px;
+  --md-blockquote-margin: 20px 0;
+  --md-blockquote-padding: 12px 16px 12px 28px;  /* 左侧留空给竖线 */
+  --md-pre-padding: 16px;
+  --md-table-cell-padding: 10px 12px;
 }
 
-/* ==================== 页面级公众号风格 ==================== */
-
-/* 浅灰页面底色 */
+/* ==================== 页面容器 ==================== */
 body {
-  background-color: #f5f5f5;
-}
-
-/* 白色卡片容器 */
-#output {
   max-width: 660px;
   margin: 0 auto;
-  background: #fff;
-  padding: 1.8rem 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 8px 4px;
+  font-size: 16px;
+  color: var(--md-text-color);
 }
 
-/* ==================== 标题样式 ==================== */
+/* ==================== 标题 ==================== */
 h1 {
-  display: block;
-  margin: 0.6em 0 1.4em;
-  padding-bottom: 0.5em;
+  margin: var(--md-h1-margin);
+  padding-bottom: 10px;
   border-bottom: 2px solid var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1.65);
+  font-size: 26px;
   font-weight: 800;
   color: var(--md-text-color);
   text-align: center;
   letter-spacing: 0.04em;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 h2 {
-  display: block;
-  margin: 3.5em 0 1.8em;
-  padding: 0.6em 1.2em;
-  background: var(--md-simple-bg);
+  margin: var(--md-h2-margin);
+  padding: 14px 18px;
+  background-color: var(--md-bg-light);
   color: var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1.45);
+  font-size: 22px;
   font-weight: 800;
   text-align: center;
   border: none;
-  border-radius: 8px 24px 8px 24px;
+  border-radius: 8px 24px 8px 24px;       /* 原特色圆角保留 */
   letter-spacing: 0.06em;
-  box-shadow: 0 2px 6px var(--md-simple-shadow);
 }
 
-h2::after {
-  content: '';
-  display: block;
-  width: 52px;
-  height: 3px;
-  background: var(--md-primary-color);
-  border-radius: 2px;
-  margin: 0.45em auto 0;
-  opacity: 0.5;
-}
+/* h2 下方的装饰短线（替代 ::after），请在 Markdown 中手动加入：
+   <hr style="width:52px; height:3px; background-color:#5a6b7c; border:none; margin:0 auto 25px; opacity:0.5;">
+   如果工具不支持 opacity，可改为较浅的实色如 #8a9aa8
+*/
 
 h3 {
-  padding: 0.3em 0 0.3em 14px;
   border-left: 4px solid var(--md-primary-color);
-  margin: 2.2em 0 0.6em;
+  padding: 4px 0 4px 14px;
+  margin: var(--md-h3-margin);
   color: var(--md-text-color);
-  font-size: calc(var(--md-font-size) * 1.2);
+  font-size: 19px;
   font-weight: 700;
   line-height: 1.35;
 }
 
-h4 {
-  margin: 2em 8px 0.5em;
+h4, h5, h6 {
+  margin: var(--md-h4-margin);
   color: var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1);
-  font-weight: bold;
-}
-
-h5 {
-  margin: 1.5em 8px 0.5em;
-  color: var(--md-primary-color);
-  font-size: calc(var(--md-font-size) * 1);
+  font-size: 16px;
   font-weight: bold;
 }
 
 h6 {
-  margin: 1.5em 8px 0.5em;
-  font-size: calc(var(--md-font-size) * 1);
-  color: var(--md-primary-color);
+  color: var(--md-light-text);
 }
 
-/* ==================== 正文段落 ==================== */
+/* ==================== 正文 ==================== */
 p {
-  margin: 1em 0;
+  margin: var(--md-p-margin);
   letter-spacing: 0.02em;
   color: var(--md-text-color);
+  line-height: 1.75;
 }
 
 /* ==================== 引用块 ==================== */
 blockquote {
-  margin: 1.2em 0;
-  padding: 1em 1em 1em 2em;
-  border-left: 4px solid var(--md-primary-color);
-  border-bottom: 0.2px solid rgba(0, 0, 0, 0.04);
-  border-top: 0.2px solid rgba(0, 0, 0, 0.04);
-  border-right: 0.2px solid rgba(0, 0, 0, 0.04);
-  background: var(--md-simple-bg);
-  border-radius: 0 6px 6px 0;
+  margin: var(--md-blockquote-margin);
+  padding: var(--md-blockquote-padding);
+  border-left: 4px solid var(--md-blockquote-border);
+  background-color: var(--md-blockquote-bg);
   color: var(--md-light-text);
   font-style: italic;
+  /* 原三边细边框已无法完美复现，用左侧强调边替代 */
 }
 
 blockquote p:last-child {
   margin-bottom: 0;
 }
 
-/* ==================== 列表项 ==================== */
+/* ==================== 列表 ==================== */
+ul, ol {
+  padding-left: 24px;               /* 恢复默认缩进，不使用伪元素自定义标记 */
+}
+
 li {
-  margin: 0.5em 8px;
+  margin: 4px 8px;
   color: var(--md-text-color);
-}
-
-ul {
-  list-style: none;
-  padding-left: 1.5em;
-}
-
-ul li::before {
-  content: "·";
-  color: var(--md-primary-color);
-  font-weight: bold;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-ol {
-  padding-left: 1.5em;
 }
 
 /* ==================== 链接 ==================== */
 a {
-  color: #576b95;
+  color: var(--md-link-color);
   text-decoration: none;
-  transition: color 0.2s;
-}
-a:hover {
-  color: var(--md-primary-color);
-  text-decoration: underline;
 }
 
-/* ==================== 粗体 ==================== */
+/* ==================== 粗体与斜体 ==================== */
 strong {
-  color: var(--md-primary-color);
+  color: var(--md-strong-color);
   font-weight: bold;
 }
 
-/* ==================== 斜体 ==================== */
 em {
-  font-style: italic;
   color: var(--md-light-text);
+  font-style: italic;
 }
 
-/* ==================== 代码 ==================== */
+/* ==================== 行内代码 ==================== */
 code {
-  color: #5a6b7c;
-  background: rgba(90, 107, 124, 0.08);
+  color: var(--md-code-color);
+  background-color: var(--md-code-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--md-font-mono);
+  font-size: 14px;
 }
 
+/* ==================== 代码块 ==================== */
 pre {
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  border-radius: 8px;
-  padding: 1em;
-  overflow-x: auto;
-  background: var(--md-simple-bg);
+  background-color: var(--md-pre-bg);
+  border: 1px solid var(--md-pre-border);
+  padding: var(--md-pre-padding);
+  white-space: pre-wrap;            /* 替代 overflow-x: auto */
+  word-break: break-all;
+  font-family: var(--md-font-mono);
+  font-size: 14px;
+  color: var(--md-text-color);
+  line-height: 1.6;
+  margin: 20px 0;
 }
 
 pre code {
   background: none;
+  padding: 0;
   color: inherit;
-  font-family: 'Fira Code', 'SF Mono', Menlo, Consolas, monospace;
-  font-size: 0.9em;
 }
 
 /* ==================== 表格 ==================== */
 table {
-  width: 100%;
   border-collapse: collapse;
-  margin: 1.25em 0;
-  font-size: 0.95em;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 14px;
 }
 
 th {
-  background: var(--md-simple-bg);
+  background-color: var(--md-table-header-bg);
   color: var(--md-primary-color);
-  font-weight: 600;
-  padding: 0.6em 1em;
-  text-align: left;
   border-bottom: 2px solid var(--md-primary-color);
+  padding: var(--md-table-cell-padding);
+  text-align: left;
+  font-weight: 600;
 }
 
 td {
-  padding: 0.5em 1em;
-  border-bottom: 1px solid var(--md-border-color);
+  border-bottom: 1px solid var(--md-table-border);
+  padding: var(--md-table-cell-padding);
+  color: var(--md-text-color);
 }
 
-tr:nth-child(even) {
-  background: rgba(90, 107, 124, 0.03);
-}
+/* 去除隔行变色，保持简洁 */
 
 /* ==================== 图片 ==================== */
 img {
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  border: 1px solid var(--md-img-border);
+  max-width: 100%;
+  height: auto;
 }
 
 figcaption,
 .md-figcaption {
   text-align: center;
   color: var(--md-light-text);
-  font-size: 0.8em;
-  margin-top: 0.5em;
+  font-size: 13px;
+  margin-top: 8px;
 }
 
 /* ==================== 分割线 ==================== */
 hr {
-  margin: 1.8em 0;
+  margin: 25px 0;
   height: 1px;
   border: none;
-  background: linear-gradient(to right, transparent, var(--md-primary-color), transparent);
-  opacity: 0.3;
-}
-
-/* ==================== 响应式：小屏幕适配 ==================== */
-@media (max-width: 640px) {
-  #output {
-    padding: 1.2rem 0.8rem;
-  }
-
-  h1 {
-    font-size: calc(var(--md-font-size) * 1.4);
-  }
-
-  h2 {
-    font-size: calc(var(--md-font-size) * 1.25);
-    margin: 2.8em 0 1.4em;
-    padding: 0.5em 1em;
-  }
-
-  h2::after {
-    width: 40px;
-  }
-
-  h3 {
-    font-size: calc(var(--md-font-size) * 1.1);
-    padding-left: 12px;
-  }
-
-  h4, h5, h6 {
-    margin: 1.2em 8px 0.3em;
-  }
-
-  p, li, blockquote {
-    margin-left: 4px;
-    margin-right: 4px;
-  }
+  background-color: var(--md-hr-color);
+  opacity: 0.3;                     /* 保留淡色效果，若失效也无妨 */
 }
